@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>K_Means Clustering</title>
+    
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(to right, #36d1dc, #5b86e5);
+            color: white;
+        }
+
+        .box {
+            background: white;
+            color: black;
+            width: 350px;
+            margin: auto;
+            margin-top: 80px;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        input {
+            width: 90%;
+            padding: 8px;
+            margin: 5px;
+        }
+
+        button {
+            padding: 10px;
+            background: #5b86e5;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        h3 {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h2>Customer Segmentation</h2>
+
+    <form action="/predict" method="post">
+
+        Age:<br>
+        <input type="number" name="age" required><br>
+
+        Spending Score:<br>
+        <input type="number" name="spending" required><br>
+
+        <button type="submit">Find Cluster</button>
+    </form>
+
+    {% if prediction is not none %}
+        <h3>Cluster: {{ prediction }}</h3>
+    {% endif %}
+
+
+</body>
+</html>
