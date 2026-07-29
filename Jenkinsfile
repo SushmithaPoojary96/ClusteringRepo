@@ -1,26 +1,13 @@
 pipeline {
-
     agent any
-
 
     stages {
 
-
-        stage('Clone Code') {
-            steps {
-                git 'https://github.com/SushmithaPoojary96/ClusteringRepo.git'
-            }
-        }
-
-
         stage('Build Docker Image') {
             steps {
-                sh '''
-                docker build -t customer-cluster .
-                '''
+                sh 'docker build -t customer-cluster .'
             }
         }
-
 
         stage('Run Docker Container') {
             steps {
@@ -29,19 +16,16 @@ pipeline {
                 docker rm customer-app || true
 
                 docker run -d \
-                -p 5000:5000 \
-                --name customer-app \
-                customer-cluster
+                    --name customer-app \
+                    -p 5000:5000 \
+                    customer-cluster
                 '''
             }
         }
 
-
         stage('Verify Container') {
             steps {
-                sh '''
-                docker ps
-                '''
+                sh 'docker ps'
             }
         }
     }
