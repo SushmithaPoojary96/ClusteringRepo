@@ -17,7 +17,7 @@ pipeline {
 
                 docker run -d \
                     --name customer-app \
-                    -p 5000:5000 \
+                    -p 5001:5000 \
                     customer-cluster
                 '''
             }
